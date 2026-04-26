@@ -39,7 +39,9 @@ export function AIReadinessCard({ risk, signals }: Props) {
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Base global risk</span>
-              <span className="font-medium tabular-nums">{risk.base_risk}%</span>
+              <span className="font-medium tabular-nums">
+                {risk.base_risk}%
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">LMIC calibrated</span>
@@ -49,7 +51,9 @@ export function AIReadinessCard({ risk, signals }: Props) {
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Reduction</span>
-              <span className="font-medium tabular-nums">−{risk.reduction_pct} pts</span>
+              <span className="font-medium tabular-nums">
+                −{risk.reduction_pct} pts
+              </span>
             </div>
           </div>
         </div>
@@ -62,7 +66,11 @@ export function AIReadinessCard({ risk, signals }: Props) {
             </div>
             <div className="flex flex-wrap gap-2">
               {risk.durable_skills.map((s) => (
-                <Badge key={s} variant="secondary" className="bg-success/10 text-success border-success/20">
+                <Badge
+                  key={s}
+                  variant="secondary"
+                  className="bg-success/10 text-success border-success/20"
+                >
                   {s}
                 </Badge>
               ))}
@@ -71,7 +79,9 @@ export function AIReadinessCard({ risk, signals }: Props) {
           <div className="p-4 rounded-lg border bg-[var(--gradient-card)]">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              <h4 className="font-semibold text-sm">Adjacent skills to learn</h4>
+              <h4 className="font-semibold text-sm">
+                Adjacent skills to learn
+              </h4>
             </div>
             <div className="flex flex-wrap gap-2">
               {risk.adjacent_skills.map((s) => (
@@ -84,36 +94,75 @@ export function AIReadinessCard({ risk, signals }: Props) {
         </div>
 
         {series.length > 0 && (
-          <div>
-            <h4 className="font-semibold text-sm mb-2">
-              Education projection 2025–2035
-            </h4>
-            <div className="h-56 w-full">
+          <figure className="space-y-1">
+            <figcaption className="text-center">
+              <h4 className="font-semibold text-sm text-foreground">
+                Secondary school completion rate (%) – Wittgenstein projections
+              </h4>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Projected attainment, {series[0].year}–
+                {series[series.length - 1].year}
+              </p>
+            </figcaption>
+            <div className="h-72 w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={series} margin={{ top: 5, right: 12, left: 0, bottom: 0 }}>
+                <LineChart
+                  data={series}
+                  margin={{ top: 8, right: 24, left: 16, bottom: 28 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                   <XAxis
                     dataKey="year"
                     stroke="var(--muted-foreground)"
                     style={{ fontSize: 12 }}
+                    tickMargin={6}
+                    label={{
+                      value: "Year",
+                      position: "insideBottom",
+                      offset: -10,
+                      style: {
+                        fill: "var(--muted-foreground)",
+                        fontSize: 12,
+                        fontWeight: 500,
+                      },
+                    }}
                   />
                   <YAxis
                     stroke="var(--muted-foreground)"
                     style={{ fontSize: 12 }}
                     domain={[0, 100]}
                     tickFormatter={(v) => `${v}%`}
+                    label={{
+                      value: "Secondary school completion (%)",
+                      angle: -90,
+                      position: "insideLeft",
+                      offset: 4,
+                      style: {
+                        fill: "var(--muted-foreground)",
+                        fontSize: 12,
+                        fontWeight: 500,
+                        textAnchor: "middle",
+                      },
+                    }}
                   />
                   <Tooltip
+                    cursor={{
+                      stroke: "var(--primary)",
+                      strokeWidth: 1,
+                      strokeOpacity: 0.4,
+                    }}
                     contentStyle={{
                       background: "var(--card)",
                       border: "1px solid var(--border)",
                       borderRadius: 8,
                       fontSize: 12,
+                      boxShadow: "var(--shadow-soft)",
                     }}
+                    labelStyle={{ color: "var(--foreground)", fontWeight: 600 }}
                     labelFormatter={(label) => `Year ${label}`}
                     formatter={(value: number) => [
-                      `${value}% projected literacy`,
-                      "Education projection",
+                      `${value}% completion`,
+                      "Wittgenstein projection",
                     ]}
                   />
                   <Legend
@@ -125,21 +174,29 @@ export function AIReadinessCard({ risk, signals }: Props) {
                   <Line
                     type="monotone"
                     dataKey="value"
-                    name="Education projection (digital literacy %)"
+                    name="Secondary school completion (%)"
                     stroke="var(--primary)"
                     strokeWidth={2.5}
-                    dot={{ r: 4, fill: "var(--primary)", strokeWidth: 2, stroke: "var(--background)" }}
+                    dot={{
+                      r: 4,
+                      fill: "var(--primary)",
+                      strokeWidth: 2,
+                      stroke: "var(--background)",
+                    }}
                     activeDot={{ r: 6 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </div>
+            <p className="text-[11px] text-muted-foreground text-center">
+              Source: Wittgenstein Centre Human Capital Data Explorer
+            </p>
+          </figure>
         )}
 
         <p className="text-xs text-muted-foreground italic border-t pt-3">
-          Calibrated for LMIC context — risk reduced by {risk.reduction_pct}% based on
-          ILO task indices.
+          Calibrated for LMIC context — risk reduced by {risk.reduction_pct}%
+          based on ILO task indices.
         </p>
       </CardContent>
     </Card>
