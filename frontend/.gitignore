@@ -1,0 +1,26 @@
+node_modules
+dist
+.tanstack
+.vercel
+.wrangler
+.cache
+
+# Local env files (never commit secrets like VITE_TAVILY_API_KEY)
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build / test artefacts
+coverage
+*.log

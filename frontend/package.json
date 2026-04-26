@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && node scripts/postbuild-vercel.mjs",
-    "build:dev": "vite build --mode development && node scripts/postbuild-vercel.mjs",
+    "build": "vite build && node scripts/postbuild.mjs",
+    "build:dev": "vite build --mode development && node scripts/postbuild.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
@@ -53,7 +53,6 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
-    "react-circular-progressbar": "^2.2.0",
     "react-day-picker": "^9.14.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.2",

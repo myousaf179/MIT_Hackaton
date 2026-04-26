@@ -1,20 +1,16 @@
 // API integration for the UNMAPPED hackathon backend.
-//
-// Configure the backend URL and third-party keys via Vite env vars (set them in
-// your `.env` locally and in the Vercel project settings for production):
-//   - VITE_API_URL          base URL of the backend (e.g. https://api.example.com)
-//   - VITE_TAVILY_API_KEY   Tavily web-search API key, forwarded to the backend
-//
-// When VITE_API_URL is empty we fall back to mock data so the UI still works
-// for local iteration without a backend.
+// Configure the backend URL via the `VITE_API_URL` environment variable
+// (e.g. set in `.env.local` for development or in the Vercel dashboard for
+// production). When unset we fall back to the in-browser mock dataset
+// below — useful for local UI iteration without a running backend.
 
-export const API_BASE: string = (import.meta.env.VITE_API_URL ?? "").replace(
-  /\/$/,
-  "",
-);
+export const API_BASE: string = import.meta.env.VITE_API_URL ?? "";
 
-export const TAVILY_API_KEY: string =
-  import.meta.env.VITE_TAVILY_API_KEY ?? "";
+// Optional Tavily API key (read from env, never hardcoded). The frontend does
+// not call Tavily directly today, but this constant is exposed so feature work
+// (e.g. live econometric search) can use it without sprinkling env reads
+// across the codebase.
+export const TAVILY_API_KEY: string = import.meta.env.VITE_TAVILY_API_KEY ?? "";
 
 export type CountryCode = "GHA" | "BGD";
 
@@ -259,21 +255,14 @@ export async function analyzeSkills(
     return buildMock(payload);
   }
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
-  // Forward the Tavily key to the backend when configured. The backend can use
-  // it to enrich econometric signals via Tavily web search.
-  if (TAVILY_API_KEY) {
-    headers["X-Tavily-Api-Key"] = TAVILY_API_KEY;
-  }
-
   const res = await fetch(`${API_BASE}/analyze`, {
     method: "POST",
     mode: "cors",
     credentials: "omit",
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
     body: JSON.stringify(payload),
   });
 

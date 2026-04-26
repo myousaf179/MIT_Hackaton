@@ -6,23 +6,28 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Production build is targeted at Vercel as a SPA:
+//   * `cloudflare: false` removes the Workers adapter so we don't ship a
+//     `wrangler.json` / Worker bundle in the deploy.
+//   * `tanstackStart.spa.enabled: true` makes TanStack Start render a static
+//     `index.html` shell that the client router hydrates — this pairs with the
+//     `/(.*)` -> `/index.html` rewrite configured in `vercel.json`.
+//   * `vite.base: "/"` keeps assets at the root (Vercel serves from the apex).
+//   * `vite.build.outDir: "dist"` matches the `outputDirectory` in
+//     `vercel.json`. The client bundle lands in `dist/client` and the SPA
+//     shell is copied to `dist/index.html` by our build script.
 export default defineConfig({
-  // Disable the Cloudflare Workers adapter so the build produces a regular
-  // static client bundle suitable for Vercel (and any other static host).
   cloudflare: false,
-  // Build the app as an SPA — TanStack Start emits a real `index.html` that
-  // Vercel can serve and rewrite all routes to.
   tanstackStart: {
-    spa: { enabled: true },
+    spa: {
+      enabled: true,
+    },
   },
   vite: {
-    // Served from the domain root on Vercel. Override via VITE_BASE_URL if you need
-    // to host the app under a sub-path (e.g. "/app/").
-    base: process.env.VITE_BASE_URL ?? "/",
+    base: "/",
     build: {
       outDir: "dist",
       emptyOutDir: true,
-      sourcemap: false,
     },
   },
 });
