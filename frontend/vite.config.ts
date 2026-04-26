@@ -6,24 +6,23 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Backend URL for the UNMAPPED hackathon. The dev server proxies `/api/*`
-// to this origin so the browser does not need to deal with CORS during local
-// development. In production builds the app talks to the backend directly via
-// `VITE_API_BASE` (see `src/api.ts`).
-const BACKEND_URL =
-  process.env.VITE_BACKEND_URL ?? "https://unmapped-backend.onrender.com";
-
 export default defineConfig({
+  // Disable the Cloudflare Workers adapter so the build produces a regular
+  // static client bundle suitable for Vercel (and any other static host).
+  cloudflare: false,
+  // Build the app as an SPA — TanStack Start emits a real `index.html` that
+  // Vercel can serve and rewrite all routes to.
+  tanstackStart: {
+    spa: { enabled: true },
+  },
   vite: {
-    server: {
-      proxy: {
-        "/api": {
-          target: BACKEND_URL,
-          changeOrigin: true,
-          secure: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
+    // Served from the domain root on Vercel. Override via VITE_BASE_URL if you need
+    // to host the app under a sub-path (e.g. "/app/").
+    base: process.env.VITE_BASE_URL ?? "/",
+    build: {
+      outDir: "dist",
+      emptyOutDir: true,
+      sourcemap: false,
     },
   },
 });
