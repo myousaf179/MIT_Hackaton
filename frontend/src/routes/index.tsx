@@ -59,26 +59,12 @@ function Index() {
   const hasSubmitted = useRef(false);
   const retryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Restore saved text + last results
+  // Keep fresh visits clean. Older builds persisted the last demo sentence and
+  // results, which made examples appear as unwanted default content.
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) setText(saved);
-    } catch {
-      /* ignore */
-    }
-    try {
-      const raw = localStorage.getItem(RESULTS_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as PersistedResults;
-        if (parsed?.data) {
-          setData(parsed.data);
-          setCountry(parsed.country);
-          setIsRural(parsed.isRural);
-          if (parsed.text) setText(parsed.text);
-          hasSubmitted.current = true;
-        }
-      }
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(RESULTS_KEY);
     } catch {
       /* ignore */
     }
@@ -86,15 +72,6 @@ function Index() {
       if (retryTimer.current) clearTimeout(retryTimer.current);
     };
   }, []);
-
-  // Persist text on change
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, text);
-    } catch {
-      /* ignore */
-    }
-  }, [text]);
 
   const persistResults = (
     res: AnalyzeResponse,
