@@ -1,0 +1,30 @@
+{
+  "BGD": {
+    "last_crawled": "2026-04-26T11:12:16Z",
+    "urls": [
+      "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
+      "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=BGD",
+      "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=BGD",
+      "https://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?locations=BGD",
+      "https://data.worldbank.org/indicator/SL.EMP.GROW?locations=BGD",
+      "https://data.worldbank.org/indicator/SL.TLF.TOTL.IN?locations=BGD",
+      "https://data.worldbank.org/indicator/SL.UEM.1524.ZS?locations=BGD",
+      "https://ilostat.ilo.org/data/",
+      "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD"
+    ]
+  },
+  "GHA": {
+    "last_crawled": "2026-04-26T11:13:11Z",
+    "urls": [
+      "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
+      "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=GHA",
+      "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=GHA",
+      "https://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?locations=GHA",
+      "https://data.worldbank.org/indicator/SL.EMP.GROW?locations=GHA",
+      "https://data.worldbank.org/indicator/SL.TLF.TOTL.IN?locations=GHA",
+      "https://data.worldbank.org/indicator/SL.UEM.1524.ZS?locations=GHA",
+      "https://ilostat.ilo.org/data/",
+      "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA"
+    ]
+  }
+}

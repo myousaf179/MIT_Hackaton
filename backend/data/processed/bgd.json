@@ -1,14 +1,14 @@
 {
-  "country_code": "GHA",
-  "country_name": "Ghana",
-  "language_default": "en",
-  "currency": "GHS",
-  "crawled_at": "2026-04-26T11:13:11Z",
+  "country_code": "BGD",
+  "country_name": "Bangladesh",
+  "language_default": "bn",
+  "currency": "BDT",
+  "crawled_at": "2026-04-26T11:12:16Z",
   "config_summary": {
-    "iso3": "GHA",
-    "iso2": "GH",
-    "default_rural_share": 0.43,
-    "itu_digital_penetration": 0.68,
+    "iso3": "BGD",
+    "iso2": "BD",
+    "default_rural_share": 0.61,
+    "itu_digital_penetration": 0.39,
     "automation_calibration": {
       "urban_factor": 0.85,
       "rural_factor": 0.7,
@@ -18,8 +18,8 @@
       "TELECOM",
       "RETAIL",
       "AGRICULTURE",
-      "CONSTRUCTION",
       "MANUFACTURING",
+      "CONSTRUCTION",
       "TRANSPORT"
     ],
     "sector_definitions": [
@@ -57,17 +57,6 @@
         ]
       },
       {
-        "code": "CONSTRUCTION",
-        "label": "Construction",
-        "isic_rev4": "F",
-        "ilostat_classif1": "ECO_ISIC4_F",
-        "related_isco_codes": [
-          "7112",
-          "9313",
-          "7126"
-        ]
-      },
-      {
         "code": "MANUFACTURING",
         "label": "Manufacturing",
         "isic_rev4": "C",
@@ -76,6 +65,17 @@
           "7223",
           "8160",
           "9321"
+        ]
+      },
+      {
+        "code": "CONSTRUCTION",
+        "label": "Construction",
+        "isic_rev4": "F",
+        "ilostat_classif1": "ECO_ISIC4_F",
+        "related_isco_codes": [
+          "7112",
+          "9313",
+          "7126"
         ]
       },
       {
@@ -109,8 +109,8 @@
         "TELECOM",
         "RETAIL",
         "AGRICULTURE",
-        "CONSTRUCTION",
         "MANUFACTURING",
+        "CONSTRUCTION",
         "TRANSPORT"
       ]
     },
@@ -127,63 +127,63 @@
   "econometric_signals": {
     "wage_floors": {
       "TELECOM": {
-        "value": 215.0,
+        "value": 205.0,
         "unit": "USD per month",
         "year": 2023,
         "source_name": "ILO ILOSTAT",
         "source_url": "https://ilostat.ilo.org/data/",
         "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
       },
       "RETAIL": {
+        "value": 125.0,
+        "unit": "USD per month",
+        "year": 2023,
+        "source_name": "ILO ILOSTAT",
+        "source_url": "https://ilostat.ilo.org/data/",
+        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
+        "crawled_at": "2026-04-26T11:12:12Z",
+        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
+      },
+      "AGRICULTURE": {
+        "value": 85.0,
+        "unit": "USD per month",
+        "year": 2023,
+        "source_name": "ILO ILOSTAT",
+        "source_url": "https://ilostat.ilo.org/data/",
+        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
+        "crawled_at": "2026-04-26T11:12:12Z",
+        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
+      },
+      "MANUFACTURING": {
+        "value": 135.0,
+        "unit": "USD per month",
+        "year": 2023,
+        "source_name": "ILO ILOSTAT",
+        "source_url": "https://ilostat.ilo.org/data/",
+        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
+        "crawled_at": "2026-04-26T11:12:12Z",
+        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
+      },
+      "CONSTRUCTION": {
         "value": 145.0,
         "unit": "USD per month",
         "year": 2023,
         "source_name": "ILO ILOSTAT",
         "source_url": "https://ilostat.ilo.org/data/",
         "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
-        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
-      },
-      "AGRICULTURE": {
-        "value": 95.0,
-        "unit": "USD per month",
-        "year": 2023,
-        "source_name": "ILO ILOSTAT",
-        "source_url": "https://ilostat.ilo.org/data/",
-        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
-        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
-      },
-      "CONSTRUCTION": {
-        "value": 175.0,
-        "unit": "USD per month",
-        "year": 2023,
-        "source_name": "ILO ILOSTAT",
-        "source_url": "https://ilostat.ilo.org/data/",
-        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
-        "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
-      },
-      "MANUFACTURING": {
-        "value": 155.0,
-        "unit": "USD per month",
-        "year": 2023,
-        "source_name": "ILO ILOSTAT",
-        "source_url": "https://ilostat.ilo.org/data/",
-        "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
       },
       "TRANSPORT": {
-        "value": 165.0,
+        "value": 150.0,
         "unit": "USD per month",
         "year": 2023,
         "source_name": "ILO ILOSTAT",
         "source_url": "https://ilostat.ilo.org/data/",
         "indicator_code": "EAR_4MTH_SEX_OCU_CUR_NB",
-        "crawled_at": "2026-04-26T11:13:04Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Approximated from regional ILO average — country/sector cell not available in ILOSTAT for this combination."
       }
     },
@@ -193,9 +193,9 @@
         "unit": "persons (thousands)",
         "year": null,
         "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
         "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Sector: Telecommunications & ICT services (J61)"
       },
       "RETAIL": {
@@ -203,9 +203,9 @@
         "unit": "persons (thousands)",
         "year": null,
         "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
         "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Sector: Retail trade (G47)"
       },
       "AGRICULTURE": {
@@ -213,39 +213,39 @@
         "unit": "persons (thousands)",
         "year": null,
         "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
         "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Sector: Agriculture, forestry & fishing (A)"
-      },
-      "CONSTRUCTION": {
-        "value": null,
-        "unit": "persons (thousands)",
-        "year": null,
-        "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
-        "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
-        "note": "Sector: Construction (F)"
       },
       "MANUFACTURING": {
         "value": null,
         "unit": "persons (thousands)",
         "year": null,
         "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
         "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Sector: Manufacturing (C)"
+      },
+      "CONSTRUCTION": {
+        "value": null,
+        "unit": "persons (thousands)",
+        "year": null,
+        "source_name": "ILO ILOSTAT",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
+        "indicator_code": "EMP_TEMP_SEX_ECO_NB",
+        "crawled_at": "2026-04-26T11:12:12Z",
+        "note": "Sector: Construction (F)"
       },
       "TRANSPORT": {
         "value": null,
         "unit": "persons (thousands)",
         "year": null,
         "source_name": "ILO ILOSTAT",
-        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=GHA",
+        "source_url": "https://www.ilo.org/shinyapps/bulkexplorer/?lang=en&id=EMP_TEMP_SEX_ECO_NB&ref_area=BGD",
         "indicator_code": "EMP_TEMP_SEX_ECO_NB",
-        "crawled_at": "2026-04-26T11:13:05Z",
+        "crawled_at": "2026-04-26T11:12:12Z",
         "note": "Sector: Transportation & storage (H)"
       }
     },
@@ -255,104 +255,104 @@
         "unit": "%",
         "year": null,
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/SL.EMP.GROW?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/SL.EMP.GROW?locations=BGD",
         "indicator_code": "SL.EMP.GROW",
-        "crawled_at": "2026-04-26T11:12:27Z",
+        "crawled_at": "2026-04-26T11:08:41Z",
         "note": "No non-null observation in series"
       },
       "SL.UEM.1524.ZS": {
-        "value": 5.826,
+        "value": 9.385,
         "unit": "%",
         "year": "2025",
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS?locations=BGD",
         "indicator_code": "SL.UEM.1524.ZS",
-        "crawled_at": "2026-04-26T11:12:46Z",
+        "crawled_at": "2026-04-26T11:09:40Z",
         "note": "Youth unemployment (15-24)"
       },
       "NY.GDP.MKTP.KD.ZG": {
-        "value": 5.59045469593266,
+        "value": 4.22325911250161,
         "unit": "%",
         "year": "2024",
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=BGD",
         "indicator_code": "NY.GDP.MKTP.KD.ZG",
-        "crawled_at": "2026-04-26T11:12:51Z",
+        "crawled_at": "2026-04-26T11:09:52Z",
         "note": "GDP growth"
       },
       "IT.NET.USER.ZS": {
-        "value": 72.17569733,
+        "value": 53.42171316,
         "unit": "% of population",
         "year": "2024",
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=BGD",
         "indicator_code": "IT.NET.USER.ZS",
-        "crawled_at": "2026-04-26T11:12:52Z",
+        "crawled_at": "2026-04-26T11:10:04Z",
         "note": "Internet users"
       },
       "SE.SEC.CMPT.LO.ZS": {
-        "value": 85.1122970581055,
+        "value": null,
         "unit": "%",
-        "year": "2024",
+        "year": null,
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?locations=BGD",
         "indicator_code": "SE.SEC.CMPT.LO.ZS",
-        "crawled_at": "2026-04-26T11:12:57Z",
-        "note": "Lower-secondary completion rate"
+        "crawled_at": "2026-04-26T11:11:08Z",
+        "note": "Fetch failed: ReadTimeout"
       },
       "SL.TLF.TOTL.IN": {
-        "value": 13250486,
+        "value": null,
         "unit": "people",
-        "year": "2025",
+        "year": null,
         "source_name": "World Bank WDI",
-        "source_url": "https://data.worldbank.org/indicator/SL.TLF.TOTL.IN?locations=GHA",
+        "source_url": "https://data.worldbank.org/indicator/SL.TLF.TOTL.IN?locations=BGD",
         "indicator_code": "SL.TLF.TOTL.IN",
-        "crawled_at": "2026-04-26T11:13:03Z",
-        "note": "Total labor force"
+        "crawled_at": "2026-04-26T11:12:11Z",
+        "note": "Fetch failed: ReadTimeout"
       }
     },
     "education_projections": {
       "secondary_completion_2020": {
-        "value": 46.1,
+        "value": 41.7,
         "unit": "% of adults 15+",
         "year": 2020,
         "source_name": "Wittgenstein Centre",
         "source_url": "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
         "indicator_code": "bprop",
-        "crawled_at": "2026-04-26T11:13:11Z",
+        "crawled_at": "2026-04-26T11:12:16Z",
         "note": "Wittgenstein fallback set (SSP2 medium scenario)."
       },
       "secondary_completion_2025": {
-        "value": 48.2,
+        "value": 44.5,
         "unit": "% of adults 15+",
         "year": 2025,
         "source_name": "Wittgenstein Centre",
         "source_url": "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
         "indicator_code": "bprop",
-        "crawled_at": "2026-04-26T11:13:11Z",
+        "crawled_at": "2026-04-26T11:12:16Z",
         "note": "Wittgenstein fallback set (SSP2 medium scenario)."
       },
       "secondary_completion_2030": {
-        "value": 52.1,
+        "value": 49.3,
         "unit": "% of adults 15+",
         "year": 2030,
         "source_name": "Wittgenstein Centre",
         "source_url": "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
         "indicator_code": "bprop",
-        "crawled_at": "2026-04-26T11:13:11Z",
+        "crawled_at": "2026-04-26T11:12:16Z",
         "note": "Wittgenstein fallback set (SSP2 medium scenario)."
       },
       "secondary_completion_2035": {
-        "value": 55.8,
+        "value": 53.9,
         "unit": "% of adults 15+",
         "year": 2035,
         "source_name": "Wittgenstein Centre",
         "source_url": "http://dataexplorer.wittgensteincentre.org/wcde-v2/",
         "indicator_code": "bprop",
-        "crawled_at": "2026-04-26T11:13:11Z",
+        "crawled_at": "2026-04-26T11:12:16Z",
         "note": "Wittgenstein fallback set (SSP2 medium scenario)."
       }
     }
   },
-  "disclaimer": "Wage data crawled from ILOSTAT may be missing for some sector × year cells. Where missing, regional ILO averages are surfaced with note=\"approximated\".\n"
+  "disclaimer": "Bangla UI strings are out of scope for this prototype; ESCO labels surface in English. The taxonomy and risk model are language-agnostic.\n"
 }
