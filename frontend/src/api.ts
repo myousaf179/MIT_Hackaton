@@ -1,7 +1,20 @@
 // API integration for the UNMAPPED hackathon backend.
-// Replace API_BASE with the deployed backend URL when ready.
+//
+// Configure the backend URL and third-party keys via Vite env vars (set them in
+// your `.env` locally and in the Vercel project settings for production):
+//   - VITE_API_URL          base URL of the backend (e.g. https://api.example.com)
+//   - VITE_TAVILY_API_KEY   Tavily web-search API key, forwarded to the backend
+//
+// When VITE_API_URL is empty we fall back to mock data so the UI still works
+// for local iteration without a backend.
 
-export const API_BASE = ""; // e.g. "https://api.example.com"
+export const API_BASE: string = (import.meta.env.VITE_API_URL ?? "").replace(
+  /\/$/,
+  "",
+);
+
+export const TAVILY_API_KEY: string =
+  import.meta.env.VITE_TAVILY_API_KEY ?? "";
 
 export type CountryCode = "GHA" | "BGD";
 
@@ -246,14 +259,21 @@ export async function analyzeSkills(
     return buildMock(payload);
   }
 
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  };
+  // Forward the Tavily key to the backend when configured. The backend can use
+  // it to enrich econometric signals via Tavily web search.
+  if (TAVILY_API_KEY) {
+    headers["X-Tavily-Api-Key"] = TAVILY_API_KEY;
+  }
+
   const res = await fetch(`${API_BASE}/analyze`, {
     method: "POST",
     mode: "cors",
     credentials: "omit",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
+    headers,
     body: JSON.stringify(payload),
   });
 
