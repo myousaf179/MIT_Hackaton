@@ -1,7 +1,16 @@
 // API integration for the UNMAPPED hackathon backend.
-// Replace API_BASE with the deployed backend URL when ready.
+// Configure the backend URL via the `VITE_API_URL` environment variable
+// (e.g. set in `.env.local` for development or in the Vercel dashboard for
+// production). When unset we fall back to the in-browser mock dataset
+// below — useful for local UI iteration without a running backend.
 
-export const API_BASE = ""; // e.g. "https://api.example.com"
+export const API_BASE: string = import.meta.env.VITE_API_URL ?? "";
+
+// Optional Tavily API key (read from env, never hardcoded). The frontend does
+// not call Tavily directly today, but this constant is exposed so feature work
+// (e.g. live econometric search) can use it without sprinkling env reads
+// across the codebase.
+export const TAVILY_API_KEY: string = import.meta.env.VITE_TAVILY_API_KEY ?? "";
 
 export type CountryCode = "GHA" | "BGD";
 
