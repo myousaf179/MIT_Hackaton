@@ -370,10 +370,7 @@ function Index() {
               signals={data.econometric_signals}
             />
             <div className="lg:col-span-2">
-              <EconometricSignalsCard
-                signals={data.econometric_signals}
-                countryCode={country}
-              />
+              <EconometricSignalsCard signals={data.econometric_signals} />
             </div>
             <div className="lg:col-span-2">
               <PortableCredentialCard credential={data.portable_credential} />

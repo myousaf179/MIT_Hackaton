@@ -33,3 +33,13 @@ pnpm-debug.log*
 # TanStack generated route tree is regenerated on dev; keep checked in only if intentional.
 # Leave commented out unless your workflow regenerates it on CI.
 # src/routeTree.gen.ts
+
+# Python backend
+backend/.env
+backend/.venv/
+backend/venv/
+backend/**/__pycache__/
+backend/.pytest_cache/
+backend/**/.mypy_cache/
+backend/data/raw/
+*.egg-info/

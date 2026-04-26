@@ -1,0 +1,71 @@
+soc_code,label,probability
+11-1011,Chief Executives,0.015
+11-3021,Computer and Information Systems Managers,0.035
+13-2011,Accountants and Auditors,0.94
+15-1121,Computer Systems Analysts,0.065
+15-1131,Computer Programmers,0.48
+15-1132,Software Developers Applications,0.042
+15-1133,Software Developers Systems Software,0.13
+15-1134,Web Developers,0.21
+15-1142,Network and Computer Systems Administrators,0.30
+15-1199,Computer Occupations All Other,0.21
+17-2061,Computer Hardware Engineers,0.22
+17-2071,Electrical Engineers,0.10
+17-2199,Engineers All Other,0.13
+21-1093,Social and Human Service Assistants,0.15
+21-2011,Clergy,0.0081
+23-1011,Lawyers,0.035
+25-1071,Health Specialties Teachers Postsecondary,0.0078
+25-2021,Elementary School Teachers,0.0044
+25-2031,Secondary School Teachers,0.0078
+25-3021,Self-Enrichment Education Teachers,0.0095
+27-1024,Graphic Designers,0.082
+27-2042,Musicians and Singers,0.074
+29-1141,Registered Nurses,0.009
+29-2061,Licensed Practical and Licensed Vocational Nurses,0.30
+31-1011,Home Health Aides,0.39
+31-9092,Medical Assistants,0.30
+33-3051,Police and Sheriffs Patrol Officers,0.098
+35-2014,Cooks Restaurant,0.96
+35-2021,Food Preparation Workers,0.87
+35-3022,Counter Attendants Cafeteria Food Concession,0.92
+35-3031,Waiters and Waitresses,0.94
+37-2011,Janitors and Cleaners,0.66
+37-3011,Landscaping and Groundskeeping Workers,0.95
+39-3091,Amusement and Recreation Attendants,0.82
+39-9011,Childcare Workers,0.084
+41-1011,First-Line Supervisors of Retail Sales Workers,0.28
+41-2011,Cashiers,0.97
+41-2031,Retail Salespersons,0.92
+41-3099,Sales Representatives Services,0.61
+41-9022,Real Estate Sales Agents,0.86
+43-3031,Bookkeeping Accounting and Auditing Clerks,0.98
+43-4051,Customer Service Representatives,0.55
+43-4171,Receptionists and Information Clerks,0.96
+43-5021,Couriers and Messengers,0.94
+43-6014,Secretaries and Administrative Assistants,0.96
+43-9021,Data Entry Keyers,0.99
+43-9061,Office Clerks General,0.96
+45-2092,Farmworkers and Laborers Crop,0.87
+45-2093,Farmworkers Farm Ranch and Aquacultural Animals,0.86
+47-2031,Carpenters,0.72
+47-2061,Construction Laborers,0.88
+47-2111,Electricians,0.15
+47-2152,Plumbers Pipefitters and Steamfitters,0.35
+49-2022,Telecommunications Equipment Installers and Repairers,0.50
+49-2092,Electric Motor Power Tool and Related Repairers,0.55
+49-2098,Security and Fire Alarm Systems Installers,0.59
+49-3023,Automotive Service Technicians and Mechanics,0.59
+49-9071,Maintenance and Repair Workers General,0.64
+51-2092,Team Assemblers,0.97
+51-3011,Bakers,0.89
+51-6031,Sewing Machine Operators,0.89
+51-9111,Packaging and Filling Machine Operators,0.98
+51-9199,Production Workers All Other,0.78
+53-3021,Bus Drivers Transit and Intercity,0.67
+53-3031,Driver Sales Workers,0.98
+53-3032,Heavy and Tractor-Trailer Truck Drivers,0.79
+53-3033,Light Truck or Delivery Services Drivers,0.69
+53-3041,Taxi Drivers and Chauffeurs,0.89
+53-7062,Laborers and Freight Stock and Material Movers,0.85
+53-7064,Packers and Packagers Hand,0.38

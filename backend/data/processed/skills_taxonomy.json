@@ -1,0 +1,178 @@
+{
+  "version": "unmapped-seed-1",
+  "esco_version": "v1.2",
+  "last_updated": "2026-04-26",
+  "language_default": "en",
+  "notes": "Hand-curated seed taxonomy covering the brief's archetypes (phone repair, retail, agriculture, software, driving, teaching, nursing, manufacturing, construction). Run `python -m scripts.build_taxonomy --expand` to enrich from the live ESCO API.",
+  "skills": [
+    {
+      "id": "skill.phone_repair",
+      "esco_label": "repair mobile devices",
+      "esco_uri": "http://data.europa.eu/esco/skill/0bf4c2a1-7e6b-4f5c-9a8b-1d2e3f4a5b6c",
+      "isco_code": "7421",
+      "isco_label": "Electronics Mechanics and Servicers",
+      "sector": "TELECOM",
+      "keywords": [
+        "phone repair", "fix phones", "fixing phones", "mobile repair",
+        "screen replacement", "battery replacement", "charging port",
+        "smartphone repair", "fix mobile", "mobile phone fixing"
+      ],
+      "alternative_labels": ["mobile device repair", "smartphone technician"],
+      "adjacent_skills": ["customer service", "inventory management", "basic accounting", "soldering", "electronics diagnostics"]
+    },
+    {
+      "id": "skill.programming",
+      "esco_label": "write computer code",
+      "esco_uri": "http://data.europa.eu/esco/skill/ccd0a1ab-d416-4773-be08-d22c1d33df4c",
+      "isco_code": "2512",
+      "isco_label": "Software Developers",
+      "sector": "TECHNOLOGY",
+      "keywords": [
+        "python", "javascript", "coding", "programming", "software development",
+        "app development", "write code", "build apps", "scripting", "automation scripts"
+      ],
+      "alternative_labels": ["software engineering", "software developer"],
+      "adjacent_skills": ["database management", "API integration", "version control", "web development", "cloud basics"]
+    },
+    {
+      "id": "skill.web_dev",
+      "esco_label": "design web pages",
+      "esco_uri": "http://data.europa.eu/esco/skill/4f6a4dba-6eaf-4a73-99c9-5c52c4c2c2dd",
+      "isco_code": "2513",
+      "isco_label": "Web and Multimedia Developers",
+      "sector": "TECHNOLOGY",
+      "keywords": [
+        "html", "css", "react", "next js", "wordpress", "build a website",
+        "web design", "frontend", "front-end", "tailwind", "static site"
+      ],
+      "alternative_labels": ["web developer", "frontend developer"],
+      "adjacent_skills": ["UI/UX basics", "accessibility", "API integration", "SEO basics"]
+    },
+    {
+      "id": "skill.crop_farming",
+      "esco_label": "operate crop production",
+      "esco_uri": "http://data.europa.eu/esco/skill/4d3e7e1c-3e4d-4a5f-9b7e-1d2c3a4b5c6d",
+      "isco_code": "9211",
+      "isco_label": "Crop Farm Labourers",
+      "sector": "AGRICULTURE",
+      "keywords": [
+        "farming", "agriculture", "crops", "harvesting", "planting",
+        "tilling", "irrigation", "field work", "smallholder", "farm work"
+      ],
+      "alternative_labels": ["smallholder farming", "crop production"],
+      "adjacent_skills": ["irrigation management", "soil testing", "basic machinery repair", "post-harvest handling", "agro-input retail"]
+    },
+    {
+      "id": "skill.retail_sales",
+      "esco_label": "provide customer service",
+      "esco_uri": "http://data.europa.eu/esco/skill/3a8b6c4d-1e2f-4a5b-8c9d-2e3f4a5b6c7d",
+      "isco_code": "5223",
+      "isco_label": "Shop Sales Assistants",
+      "sector": "RETAIL",
+      "keywords": [
+        "retail", "shop", "sales", "selling", "store", "shopkeeper",
+        "market trader", "stall", "kiosk", "customer service"
+      ],
+      "alternative_labels": ["shop assistant", "trader"],
+      "adjacent_skills": ["inventory management", "digital marketing", "mobile money operations", "basic accounting"]
+    },
+    {
+      "id": "skill.driving",
+      "esco_label": "drive vehicles",
+      "esco_uri": "http://data.europa.eu/esco/skill/2d3e4f5a-6b7c-8d9e-0f1a-2b3c4d5e6f7a",
+      "isco_code": "8322",
+      "isco_label": "Car, Taxi and Van Drivers",
+      "sector": "TRANSPORT",
+      "keywords": [
+        "driving", "delivery", "taxi", "ride hailing", "boda", "okada",
+        "uber", "bolt", "transport", "courier"
+      ],
+      "alternative_labels": ["taxi driver", "delivery rider"],
+      "adjacent_skills": ["route planning", "basic vehicle maintenance", "logistics coordination", "navigation apps"]
+    },
+    {
+      "id": "skill.teaching",
+      "esco_label": "teach in the primary school context",
+      "esco_uri": "http://data.europa.eu/esco/skill/9c8d7e6f-5a4b-3c2d-1e0f-9a8b7c6d5e4f",
+      "isco_code": "2341",
+      "isco_label": "Primary School Teachers",
+      "sector": "EDUCATION",
+      "keywords": [
+        "teaching", "tutor", "tutoring", "private lessons", "primary school",
+        "after school", "instruction", "lesson planning"
+      ],
+      "alternative_labels": ["tutor", "teacher"],
+      "adjacent_skills": ["digital lesson design", "early childhood development", "literacy facilitation"]
+    },
+    {
+      "id": "skill.nursing",
+      "esco_label": "provide nursing care",
+      "esco_uri": "http://data.europa.eu/esco/skill/6f5e4d3c-2b1a-9c8d-7e6f-5a4b3c2d1e0f",
+      "isco_code": "3221",
+      "isco_label": "Nursing Associate Professionals",
+      "sector": "HEALTH",
+      "keywords": [
+        "nurse", "nursing", "patient care", "first aid", "community health",
+        "health worker", "clinic"
+      ],
+      "alternative_labels": ["nurse aide", "community health worker"],
+      "adjacent_skills": ["maternal health", "vital signs monitoring", "vaccination assistance", "health record keeping"]
+    },
+    {
+      "id": "skill.sewing",
+      "esco_label": "operate sewing machines",
+      "esco_uri": "http://data.europa.eu/esco/skill/8e7d6c5b-4a39-2f1e-0d9c-8b7a6f5e4d3c",
+      "isco_code": "8153",
+      "isco_label": "Sewing Machine Operators",
+      "sector": "MANUFACTURING",
+      "keywords": [
+        "sewing", "tailor", "tailoring", "garment", "stitching",
+        "seamstress", "dressmaking", "fashion making"
+      ],
+      "alternative_labels": ["tailor", "garment worker"],
+      "adjacent_skills": ["pattern design", "fabric sourcing", "small business operations", "online selling"]
+    },
+    {
+      "id": "skill.construction_labour",
+      "esco_label": "perform building construction tasks",
+      "esco_uri": "http://data.europa.eu/esco/skill/1a9b8c7d-6e5f-4a3b-2c1d-0e9f8a7b6c5d",
+      "isco_code": "9313",
+      "isco_label": "Building Construction Labourers",
+      "sector": "CONSTRUCTION",
+      "keywords": [
+        "construction", "building", "masonry", "bricklaying", "site work",
+        "labourer", "laborer", "concrete"
+      ],
+      "alternative_labels": ["construction worker", "site labourer"],
+      "adjacent_skills": ["safety procedures", "blueprint reading", "scaffolding", "tool maintenance"]
+    },
+    {
+      "id": "skill.cooking",
+      "esco_label": "prepare meals to order",
+      "esco_uri": "http://data.europa.eu/esco/skill/5c4b3a29-1e0d-9f8e-7d6c-5b4a39281e0d",
+      "isco_code": "5120",
+      "isco_label": "Cooks",
+      "sector": "RETAIL",
+      "keywords": [
+        "cooking", "chef", "food preparation", "catering", "street food",
+        "restaurant kitchen", "meal prep"
+      ],
+      "alternative_labels": ["chef", "cook"],
+      "adjacent_skills": ["food hygiene", "menu design", "ingredient sourcing", "small business operations"]
+    },
+    {
+      "id": "skill.bookkeeping",
+      "esco_label": "maintain financial records",
+      "esco_uri": "http://data.europa.eu/esco/skill/7d8e9f0a-1b2c-3d4e-5f6a-7b8c9d0e1f2a",
+      "isco_code": "4311",
+      "isco_label": "Accounting and Bookkeeping Clerks",
+      "sector": "RETAIL",
+      "keywords": [
+        "bookkeeping", "accounting", "ledger", "balance sheet", "cash book",
+        "small business accounts", "financial records"
+      ],
+      "alternative_labels": ["accounts clerk", "bookkeeper"],
+      "adjacent_skills": ["spreadsheet basics", "tax compliance basics", "mobile money reconciliation", "inventory accounting"]
+    }
+  ]
+}

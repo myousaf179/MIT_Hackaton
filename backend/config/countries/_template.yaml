@@ -1,0 +1,68 @@
+# Country configuration template.
+#
+# Copy this file to `<ISO3>.yaml` (e.g. `NGA.yaml`), fill in the values, then run
+#   python -m scripts.crawl <ISO3>
+# to populate `data/processed/<iso3>.json`.
+#
+# All numeric values that have a "source:" comment should reference a real,
+# citable indicator from World Bank WDI / ILOSTAT / ITU. The crawler will refresh
+# them; the values here are sensible bootstraps used until the first crawl.
+
+iso3: XXX                          # ISO-3166 alpha-3
+iso2: XX                           # ISO-3166 alpha-2 (used for WB country pages)
+name: Country Name
+display_name_local: ""             # optional native-script name
+
+# UI languages — first entry is the default. ISO 639-1 codes.
+languages:
+  - en
+
+currency: USD                      # ISO 4217 currency code
+
+# Share of population in rural areas. Used as the default for the
+# AI Readiness module when the user does not specify is_rural.
+# Source: World Bank SP.RUR.TOTL.ZS / national census.
+default_rural_share: 0.5
+
+# Internet penetration (share of population using the internet, 0-1).
+# Source: World Bank IT.NET.USER.ZS / ITU Digital Development.
+itu_digital_penetration: 0.5
+
+# Multipliers applied on top of the Frey-Osborne baseline to reflect the
+# different automation infrastructure of LMIC contexts.
+# 1.0 = identical to high-income baseline; lower values = lower automation risk.
+automation_calibration:
+  urban_factor: 0.85               # 15% lower risk for urban LMIC workers
+  rural_factor: 0.70               # 30% lower risk for rural LMIC workers
+  digital_weight: 0.4              # how much itu_digital_penetration deflates risk
+
+# Sector codes (from config/sectors.yaml) we crawl wages / employment for.
+sectors_of_interest:
+  - TELECOM
+  - RETAIL
+  - AGRICULTURE
+  - CONSTRUCTION
+  - MANUFACTURING
+
+# ILOSTAT bulk-download indicator IDs.
+# Browse the catalogue at https://rplumber.ilo.org/files/website/bulk/indicator.html
+ilostat_indicators:
+  - EAR_4MTH_SEX_OCU_CUR_NB        # Mean monthly earnings of employees by sex and occupation
+  - EMP_TEMP_SEX_ECO_NB            # Employment by sex and economic activity
+  - UNE_DEAP_SEX_AGE_RT_A          # Unemployment rate by sex and age (annual)
+
+# World Bank WDI indicator codes.
+worldbank_indicators:
+  - SL.EMP.GROW                    # Employment to population ratio growth
+  - SL.UEM.1524.ZS                 # Youth unemployment (15-24)
+  - NY.GDP.MKTP.KD.ZG              # GDP growth (annual %)
+  - IT.NET.USER.ZS                 # Individuals using the internet (% of population)
+  - SE.SEC.CMPT.LO.ZS              # Lower-secondary completion rate
+
+# Wittgenstein Centre (SSP2) projection years to fetch.
+wittgenstein_years: [2020, 2025, 2030, 2035]
+
+# Optional human-readable disclaimer surfaced verbatim in the API response.
+disclaimer: >
+  Data points marked with note="approximated" derive from regional ILO averages
+  and should be verified against national statistics offices for policymaking.

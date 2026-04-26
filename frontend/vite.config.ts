@@ -29,5 +29,22 @@ export default defineConfig({
       outDir: "dist",
       emptyOutDir: true,
     },
+    // One dev server, stable HMR. Avoids "Failed to fetch dynamically imported
+    // module" when a stale 5173 process serves broken cached chunks.
+    server: {
+      port: 5173,
+      strictPort: true,
+    },
+    optimizeDeps: {
+      include: [
+        "react",
+        "react-dom",
+        "react-circular-progressbar",
+        "lucide-react",
+        "recharts",
+        "sonner",
+        "@tanstack/react-router",
+      ],
+    },
   },
 });

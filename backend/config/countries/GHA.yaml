@@ -1,0 +1,45 @@
+iso3: GHA
+iso2: GH
+name: Ghana
+display_name_local: Ghana
+
+languages:
+  - en
+  - tw   # Twi (display fallback only — no full UI translation shipped)
+
+currency: GHS
+
+default_rural_share: 0.43          # World Bank SP.RUR.TOTL.ZS (2023)
+itu_digital_penetration: 0.68      # World Bank IT.NET.USER.ZS (2022)
+
+automation_calibration:
+  urban_factor: 0.85
+  rural_factor: 0.70
+  digital_weight: 0.4
+
+sectors_of_interest:
+  - TELECOM
+  - RETAIL
+  - AGRICULTURE
+  - CONSTRUCTION
+  - MANUFACTURING
+  - TRANSPORT
+
+ilostat_indicators:
+  - EAR_4MTH_SEX_OCU_CUR_NB
+  - EMP_TEMP_SEX_ECO_NB
+  - UNE_DEAP_SEX_AGE_RT_A
+
+worldbank_indicators:
+  - SL.EMP.GROW
+  - SL.UEM.1524.ZS
+  - NY.GDP.MKTP.KD.ZG
+  - IT.NET.USER.ZS
+  - SE.SEC.CMPT.LO.ZS
+  - SL.TLF.TOTL.IN
+
+wittgenstein_years: [2020, 2025, 2030, 2035]
+
+disclaimer: >
+  Wage data crawled from ILOSTAT may be missing for some sector × year cells.
+  Where missing, regional ILO averages are surfaced with note="approximated".

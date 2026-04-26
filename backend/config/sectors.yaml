@@ -1,0 +1,59 @@
+# Shared sector catalogue (ISIC Rev.4 → ILOSTAT classif1 codes → ISCO-08 hint codes).
+#
+# Country YAMLs reference these by `code` in their `sectors_of_interest` list.
+# Adding a new sector here makes it available to every country.
+
+sectors:
+  - code: TELECOM
+    label: Telecommunications & ICT services
+    isic_rev4: J61
+    ilostat_classif1: ECO_ISIC4_J
+    related_isco_codes: ["2434", "7421", "3522"]
+
+  - code: RETAIL
+    label: Retail trade
+    isic_rev4: G47
+    ilostat_classif1: ECO_ISIC4_G
+    related_isco_codes: ["5223", "5221", "9520"]
+
+  - code: AGRICULTURE
+    label: Agriculture, forestry & fishing
+    isic_rev4: A
+    ilostat_classif1: ECO_ISIC4_A
+    related_isco_codes: ["6111", "9211", "6121"]
+
+  - code: CONSTRUCTION
+    label: Construction
+    isic_rev4: F
+    ilostat_classif1: ECO_ISIC4_F
+    related_isco_codes: ["7112", "9313", "7126"]
+
+  - code: MANUFACTURING
+    label: Manufacturing
+    isic_rev4: C
+    ilostat_classif1: ECO_ISIC4_C
+    related_isco_codes: ["7223", "8160", "9321"]
+
+  - code: TRANSPORT
+    label: Transportation & storage
+    isic_rev4: H
+    ilostat_classif1: ECO_ISIC4_H
+    related_isco_codes: ["8322", "8332", "9621"]
+
+  - code: EDUCATION
+    label: Education services
+    isic_rev4: P
+    ilostat_classif1: ECO_ISIC4_P
+    related_isco_codes: ["2330", "2341", "2342"]
+
+  - code: HEALTH
+    label: Human health & social work
+    isic_rev4: Q
+    ilostat_classif1: ECO_ISIC4_Q
+    related_isco_codes: ["2221", "3221", "5321"]
+
+  - code: TECHNOLOGY
+    label: Software & professional ICT
+    isic_rev4: J62
+    ilostat_classif1: ECO_ISIC4_J
+    related_isco_codes: ["2512", "2514", "2519"]

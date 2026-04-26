@@ -1,0 +1,71 @@
+soc_code,isco08_code,note
+11-1011,1120,Chief Executives → Managing Directors
+11-3021,1330,IS Managers → ICT Service Managers
+13-2011,2411,Accountants → Accountants
+15-1121,2511,Systems Analysts → Systems Analysts
+15-1131,2512,Programmers → Software Developers
+15-1132,2512,Software Devs Apps → Software Developers
+15-1133,2512,Software Devs Systems → Software Developers
+15-1134,2513,Web Developers → Web and Multimedia Developers
+15-1142,2522,Network Admins → Systems Administrators
+15-1199,2519,Computer Occupations Other → Software/App Developers Other
+17-2061,2152,Computer Hardware Engineers → Electronics Engineers
+17-2071,2151,Electrical Engineers → Electrical Engineers
+17-2199,2149,Other Engineers → Engineering Professionals NEC
+21-1093,3412,Social Service Assistants → Social Work Associate Professionals
+21-2011,2636,Clergy → Religious Professionals
+23-1011,2611,Lawyers → Lawyers
+25-1071,2310,Postsecondary Health Teachers → University and Higher Ed Teachers
+25-2021,2341,Elementary Teachers → Primary School Teachers
+25-2031,2330,Secondary Teachers → Secondary Education Teachers
+25-3021,2355,Self-Enrichment Teachers → Other Arts Teachers
+27-1024,2166,Graphic Designers → Graphic and Multimedia Designers
+27-2042,2652,Musicians and Singers → Musicians Singers and Composers
+29-1141,2221,Registered Nurses → Nursing Professionals
+29-2061,3221,LPN/LVN → Nursing Associate Professionals
+31-1011,5322,Home Health Aides → Home-Based Personal Care Workers
+31-9092,3256,Medical Assistants → Medical Assistants
+33-3051,5412,Police Officers → Police Officers
+35-2014,5120,Restaurant Cooks → Cooks
+35-2021,9412,Food Prep Workers → Kitchen Helpers
+35-3022,5246,Counter Attendants → Food Service Counter Attendants
+35-3031,5131,Waiters and Waitresses → Waiters
+37-2011,9112,Janitors and Cleaners → Cleaners and Helpers in Offices
+37-3011,9214,Landscaping Workers → Garden and Horticultural Labourers
+39-3091,5169,Amusement Attendants → Personal Services Workers NEC
+39-9011,5311,Childcare Workers → Child Care Workers
+41-1011,5221,Retail Sales Supervisors → Shopkeepers
+41-2011,5230,Cashiers → Cashiers and Ticket Clerks
+41-2031,5223,Retail Salespersons → Shop Sales Assistants
+41-3099,2433,Sales Reps Services → Technical and Medical Sales Professionals
+41-9022,3334,Real Estate Agents → Real Estate Agents
+43-3031,4311,Bookkeeping Clerks → Accounting and Bookkeeping Clerks
+43-4051,4222,Customer Service Reps → Contact Centre Information Clerks
+43-4171,4226,Receptionists → Receptionists General
+43-5021,9621,Couriers and Messengers → Messengers Package Deliverers and Luggage Porters
+43-6014,4120,Secretaries → Secretaries General
+43-9021,4132,Data Entry Keyers → Data Entry Clerks
+43-9061,4110,Office Clerks → General Office Clerks
+45-2092,9211,Crop Farmworkers → Crop Farm Labourers
+45-2093,9212,Animal Farmworkers → Livestock Farm Labourers
+47-2031,7115,Carpenters → Carpenters and Joiners
+47-2061,9313,Construction Laborers → Building Construction Labourers
+47-2111,7411,Electricians → Building and Related Electricians
+47-2152,7126,Plumbers → Plumbers and Pipe Fitters
+49-2022,7422,Telecom Installers → ICT Installers and Servicers
+49-2092,7233,Electric Motor Repairers → Industrial Machinery Mechanics
+49-2098,7421,Security Alarm Installers → Electronics Mechanics and Servicers
+49-3023,7231,Automotive Mechanics → Motor Vehicle Mechanics
+49-9071,7233,Maintenance Workers → Industrial Machinery Mechanics
+51-2092,8211,Team Assemblers → Mechanical Machinery Assemblers
+51-3011,7512,Bakers → Bakers Pastry-Cooks and Confectionery Makers
+51-6031,8153,Sewing Machine Operators → Sewing Machine Operators
+51-9111,8183,Packaging Machine Operators → Packing Bottling and Labelling Machine Operators
+51-9199,8189,Production Workers Other → Stationary Plant and Machine Operators NEC
+53-3021,8331,Transit Bus Drivers → Bus and Tram Drivers
+53-3031,8322,Driver Sales Workers → Car Taxi and Van Drivers
+53-3032,8332,Heavy Truck Drivers → Heavy Truck and Lorry Drivers
+53-3033,8322,Light Truck Drivers → Car Taxi and Van Drivers
+53-3041,8322,Taxi Drivers → Car Taxi and Van Drivers
+53-7062,9333,Freight Movers → Freight Handlers
+53-7064,9321,Hand Packers → Hand Packers

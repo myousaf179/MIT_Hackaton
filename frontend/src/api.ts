@@ -6,10 +6,9 @@
 
 export const API_BASE: string = import.meta.env.VITE_API_URL ?? "";
 
-// Optional Tavily API key (read from env, never hardcoded). The frontend does
-// not call Tavily directly today, but this constant is exposed so feature work
-// (e.g. live econometric search) can use it without sprinkling env reads
-// across the codebase.
+// Optional Tavily API key (read from env, never hardcoded). Some UI panels
+// can call Tavily from the client for live verification; the backend can also
+// use Tavily server-side (preferred for production).
 export const TAVILY_API_KEY: string = import.meta.env.VITE_TAVILY_API_KEY ?? "";
 
 export type CountryCode = "GHA" | "BGD";
@@ -40,24 +39,29 @@ export interface RiskAssessment {
 }
 
 export interface PortableCredential {
-  "@context": string[];
-  type: string[];
-  issuer: string;
-  issuanceDate: string;
-  credentialSubject: Record<string, unknown>;
+  "@context"?: string | string[];
+  type?: string | string[];
+  issuer?: string;
+  issuanceDate?: string;
+  credentialSubject?: Record<string, unknown>;
+  [k: string]: unknown;
 }
 
+/** Shape expected by the Lovable / TanStack UI components */
 export interface AnalyzeResponse {
   profile: SkillMatch[];
   risk_assessment: RiskAssessment;
   econometric_signals: EconometricSignal[];
   portable_credential: PortableCredential;
+  /** Only present when talking to the real FastAPI backend */
+  _raw?: Record<string, unknown>;
 }
 
 export interface AnalyzeRequest {
   text: string;
   country_code: CountryCode;
   is_rural: boolean;
+  language?: string;
 }
 
 const COUNTRY_DATA: Record<
@@ -103,11 +107,132 @@ const COUNTRY_DATA: Record<
   },
 };
 
+function escoCodeFromUri(uri: string | undefined): string {
+  if (!uri) return "—";
+  const seg = uri.split("/").filter(Boolean).pop() ?? "—";
+  return seg.length > 24 ? seg.slice(0, 24) + "…" : seg;
+}
+
+const WB_LABELS: Record<string, string> = {
+  "SL.UEM.1524.ZS": "Youth unemployment (WDI)",
+  "SL.EMP.GROW": "Employment growth (WDI)",
+  "NY.GDP.MKTP.KD.ZG": "GDP growth (WDI)",
+  "IT.NET.USER.ZS": "Internet users (WDI)",
+  "SE.SEC.CMPT.LO.ZS": "Lower-secondary completion (WDI)",
+};
+
+function humanizeSignalType(st: string): string {
+  if (WB_LABELS[st]) return WB_LABELS[st];
+  const map: Record<string, string> = {
+    wage_floor: "Wage floor (sector)",
+    education_projection: "Education projection (adults 15+)",
+    sector_employment: "Sector employment (ILO ILOSTAT)",
+  };
+  if (map[st]) return map[st];
+  return st.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/**
+ * Map FastAPI `POST /analyze` JSON to the flatter structure the UI was built
+ * for (Lovable mock). Keeps the chart + cards working with real WDI/ILO data.
+ */
+export function mapBackendAnalyzeToUI(raw: Record<string, unknown>): AnalyzeResponse {
+  const prof = raw.profile as
+    | { skills?: Array<Record<string, unknown>> }
+    | undefined;
+  const risk = raw.risk_assessment as Record<string, unknown> | undefined;
+  const econ = (raw.econometric_signals as Array<Record<string, unknown>>) ?? [];
+  const eduTr = raw.education_trajectory as
+    | { points?: Array<Record<string, unknown>>; source_name?: string }
+    | undefined;
+  const cred = (raw.portable_credential as Record<string, unknown>) ?? {};
+
+  const skills = prof?.skills ?? [];
+  const profile: SkillMatch[] = skills.map((s) => ({
+    name: String(s.esco_label ?? s.name ?? "Skill"),
+    isco_code: String(s.isco_code ?? ""),
+    esco_code: escoCodeFromUri(s.esco_uri as string | undefined),
+    confidence: typeof s.confidence === "number" ? s.confidence : 0,
+  }));
+
+  const basePct =
+    typeof risk?.base_risk_percentage === "number"
+      ? (risk.base_risk_percentage as number)
+      : Number(risk?.base_risk ?? 0) * 100;
+  const calPct =
+    typeof risk?.overall_risk_percentage === "number"
+      ? (risk.overall_risk_percentage as number)
+      : Number(risk?.overall_risk ?? 0) * 100;
+
+  const riskOut: RiskAssessment = {
+    base_risk: Math.round(basePct * 10) / 10,
+    calibrated_risk: Math.round(calPct * 10) / 10,
+    reduction_pct: Math.max(0, Math.round((basePct - calPct) * 10) / 10),
+    durable_skills: (risk?.durable_skills as string[]) ?? [],
+    adjacent_skills: (risk?.adjacent_skills_suggested as string[]) ?? [],
+  };
+
+  const signalsOut: EconometricSignal[] = [];
+
+  for (const sig of econ) {
+    const st = String(sig.signal_type ?? "signal");
+    if (st === "education_projection") {
+      continue;
+    }
+    const val = sig.value;
+    const unit = sig.unit != null && sig.unit !== "" ? ` ${sig.unit}` : "";
+    const valueStr = val != null && val !== "" ? `${val}${unit}`.trim() : "—";
+    const y =
+      sig.year != null && sig.year !== ""
+        ? Number(sig.year)
+        : undefined;
+    signalsOut.push({
+      signal_type: humanizeSignalType(st),
+      value: valueStr,
+      numeric_value: typeof val === "number" ? val : undefined,
+      year: y !== undefined && !Number.isNaN(y) ? y : undefined,
+      description: String(
+        (sig as { note?: string }).note ??
+          (sig as { source_name?: string }).source_name ??
+          "",
+      ),
+      source_url: String(
+        (sig as { source_url?: string }).source_url ?? "",
+      ),
+      source_name: (sig as { source_name?: string }).source_name,
+    });
+  }
+
+  for (const pt of eduTr?.points ?? []) {
+    const y = pt.year != null ? Number(pt.year) : undefined;
+    const v = pt.value != null ? Number(pt.value) : undefined;
+    if (y == null || Number.isNaN(y) || v == null || Number.isNaN(v)) continue;
+    signalsOut.push({
+      signal_type: "Education Projection Series",
+      value: `${v}%`,
+      numeric_value: v,
+      year: y,
+      description: String(
+        pt.label ?? "Projected share of adults with upper-secondary+ education",
+      ),
+      source_url: String(pt.source_url ?? ""),
+      source_name: eduTr?.source_name ?? "Wittgenstein Centre",
+    });
+  }
+
+  return {
+    profile,
+    risk_assessment: riskOut,
+    econometric_signals: signalsOut,
+    portable_credential: cred as PortableCredential,
+    _raw: raw,
+  };
+}
+
 function buildMock(req: AnalyzeRequest): AnalyzeResponse {
   const c = COUNTRY_DATA[req.country_code];
   const text = req.text.toLowerCase();
 
-  // Naive skill detection from input text
   const candidates: SkillMatch[] = [];
   if (/(repair|fix|electron|phone|hardware)/.test(text))
     candidates.push({
@@ -153,7 +278,6 @@ function buildMock(req: AnalyzeRequest): AnalyzeResponse {
     });
 
   const baseRisk = req.country_code === "GHA" ? 48 : 54;
-  // Rural calibration: lower risk because manual/physical tasks dominate
   const ruralAdj = req.is_rural ? 14 : 6;
   const calibrated = Math.max(8, baseRisk - ruralAdj);
   const reduction = baseRisk - calibrated;
@@ -195,7 +319,6 @@ function buildMock(req: AnalyzeRequest): AnalyzeResponse {
         description: `Projected adult digital literacy rate in ${c.name}, 2025–2035`,
         source_url: "https://uis.unesco.org/",
         source_name: "UNESCO UIS",
-        // attach series as JSON in description? We'll instead expose via a sibling field below
       },
       ...c.education.map<EconometricSignal>((p) => ({
         signal_type: "Education Projection Series",
@@ -236,7 +359,8 @@ function buildMock(req: AnalyzeRequest): AnalyzeResponse {
  * Analyze user-described skills against ISCO/ESCO and LMIC econometric signals.
  *
  * When API_BASE is empty we return mock data (good for local UI iteration).
- * When set, we POST to `${API_BASE}/analyze` with CORS enabled.
+ * When set, we POST to `${API_BASE}/analyze` with CORS enabled and map the
+ * FastAPI response to the UI shape.
  */
 export async function analyzeSkills(
   text: string,
@@ -247,15 +371,15 @@ export async function analyzeSkills(
     text,
     country_code: countryCode,
     is_rural: isRural,
+    language: "en",
   };
 
   if (!API_BASE) {
-    // Simulate slow network for realism
     await new Promise((r) => setTimeout(r, 900));
     return buildMock(payload);
   }
 
-  const res = await fetch(`${API_BASE}/analyze`, {
+  const res = await fetch(`${API_BASE.replace(/\/$/, "")}/analyze`, {
     method: "POST",
     mode: "cors",
     credentials: "omit",
@@ -263,12 +387,24 @@ export async function analyzeSkills(
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      text: payload.text,
+      country_code: countryCode,
+      is_rural: isRural,
+      language: "en",
+    }),
   });
 
   if (!res.ok) {
-    throw new Error(`Backend returned ${res.status}: ${res.statusText}`);
+    const t = await res.text().catch(() => "");
+    throw new Error(
+      `Backend returned ${res.status}: ${t || res.statusText}`,
+    );
   }
 
-  return (await res.json()) as AnalyzeResponse;
+  const raw = (await res.json()) as Record<string, unknown>;
+  if (raw.profile && (raw as { profile: { skills?: unknown } }).profile.skills) {
+    return mapBackendAnalyzeToUI(raw);
+  }
+  return raw as unknown as AnalyzeResponse;
 }
