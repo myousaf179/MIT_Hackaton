@@ -40,14 +40,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "UNMAPPED — Map invisible skills into AI-ready credentials" },
+      { title: "unmapped-ai | Map invisible skills into AI-ready credentials" },
       {
         name: "description",
         content:
           "Translate informal skills into ISCO/ESCO-aligned, portable credentials calibrated for LMIC labour markets. World Bank UNMAPPED hackathon.",
       },
-      { name: "author", content: "UNMAPPED" },
-      { property: "og:title", content: "UNMAPPED — Skills, mapped." },
+      { name: "author", content: "unmapped-ai" },
+      { property: "og:title", content: "unmapped-ai - Skills, mapped." },
       {
         property: "og:description",
         content:
